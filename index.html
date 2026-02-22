@@ -2,29 +2,24 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>🌙 تحفة العيد - إرسال التهاني بلمسة سحرية</title>
-  <!-- Font Awesome 6 (أيقونات رائعة) -->
+  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* ========== المتغيرات الجذرية ========== */
+    /* ========== المتغيرات وإعادة الضبط ========== */
     :root {
       --gold: #FFD966;
-      --gold-dark: #F4A300;
-      --gold-gradient: linear-gradient(145deg, #F6E58D, #F4A300, #FFB347);
-      --bg-dark: #0A0F1F;
-      --bg-purple: #1A1F35;
-      --glass-bg: rgba(10, 15, 30, 0.3);
-      --border-glow: rgba(255, 215, 0, 0.3);
-      --shadow-intensity: 0 30px 60px rgba(0, 0, 0, 0.7);
+      --glass-bg: rgba(10, 15, 30, 0.4);
+      --shadow-intensity: 0 20px 40px rgba(0, 0, 0, 0.6);
     }
 
-    /* ========== إعادة تعيين وتنسيق أساسي ========== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, 'GESSTwo', system-ui, sans-serif;
+      font-family: 'Segoe UI', Tahoma, system-ui, sans-serif;
+      -webkit-tap-highlight-color: transparent; /* إزالة التمييز الأزرق عند اللمس */
     }
 
     body {
@@ -38,44 +33,34 @@
       padding: 16px;
     }
 
-    /* ========== خلفية كونية 3D ========== */
+    /* ========== خلفية مبسطة لكن جميلة ========== */
     .cosmic-bg {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
       z-index: 0;
+      pointer-events: none;
     }
     .stars-layer1, .stars-layer2 {
       position: absolute;
       width: 100%; height: 100%;
       background-size: 500px 500px;
+      opacity: 0.5;
     }
     .stars-layer1 {
       background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIxLjUiIGZpbGw9IiNmZmZmZmYiIC8+PGNpcmNsZSBjeD0iMTUwIiBjeT0iMjAwIiByPSIxIiBmaWxsPSIjZmZmZmZmIiAvPjxjaXJjbGUgY3g9IjQwMCIgY3k9IjEwMCIgcj0iMiIgZmlsbD0iI2ZmZmZmZiIgLz48Y2lyY2xlIGN4PSIzMDAiIGN5PSI0MDAiIHI9IjEiIGZpbGw9IiNmZmZmZmYiIC8+PC9zdmc+');
       animation: driftStars 180s linear infinite;
-      opacity: 0.7;
     }
     .stars-layer2 {
       background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48Y2lyY2xlIGN4PSI4MCIgY3k9IjE1MCIgcj0iMSIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC42IiAvPjxjaXJjbGUgY3g9IjI1MCIgY3k9IjUwIiByPSIxLjgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuNyIgLz48L3N2Zz4=');
       animation: driftStars 240s linear reverse infinite;
-      opacity: 0.5;
-    }
-    .twinkling-layer {
-      position: absolute;
-      width: 100%; height: 100%;
-      background: radial-gradient(circle at 20% 30%, rgba(255,255,180,0.1) 0%, transparent 30%);
-      animation: twinklingGlobal 4s infinite alternate;
     }
     @keyframes driftStars {
       from { transform: translateY(0) translateX(0); }
       to { transform: translateY(-500px) translateX(100px); }
     }
-    @keyframes twinklingGlobal {
-      0% { opacity: 0.3; }
-      100% { opacity: 0.9; }
-    }
 
-    /* ========== فوانيس متحركة إضافية ========== */
+    /* ========== فوانيس خفيفة (بدون ظل ثقيل) ========== */
     .lanterns {
       position: absolute;
       width: 100%; height: 100%;
@@ -84,305 +69,252 @@
     }
     .lantern {
       position: absolute;
-      filter: drop-shadow(0 0 20px rgba(255, 200, 0, 0.6));
+      filter: drop-shadow(0 0 15px rgba(255, 200, 0, 0.5));
       animation: floatLantern 6s infinite ease-in-out;
+      will-change: transform; /* تحسين الأداء */
     }
-    .lantern:nth-child(1) { top: 5%; left: 3%; width: clamp(70px,12vw,110px); height: clamp(105px,18vw,165px); }
-    .lantern:nth-child(2) { top: 8%; right: 3%; width: clamp(70px,12vw,110px); height: clamp(105px,18vw,165px); animation-delay: 1s; }
-    .lantern:nth-child(3) { bottom: 10%; left: 8%; width: clamp(50px,8vw,80px); height: clamp(75px,12vw,120px); animation-delay: 2s; opacity:0.8; }
-    .lantern:nth-child(4) { bottom: 12%; right: 8%; width: clamp(50px,8vw,80px); height: clamp(75px,12vw,120px); animation-delay: 2.5s; opacity:0.8; }
-    .lantern:nth-child(5) { top: 20%; left: 20%; width: clamp(40px,6vw,60px); height: clamp(60px,9vw,90px); animation-delay: 3s; opacity:0.6; }
-    .lantern:nth-child(6) { top: 65%; right: 20%; width: clamp(40px,6vw,60px); height: clamp(60px,9vw,90px); animation-delay: 3.5s; opacity:0.6; }
+    .lantern:nth-child(1) { top: 5%; left: 3%; width: clamp(60px,10vw,90px); }
+    .lantern:nth-child(2) { top: 8%; right: 3%; width: clamp(60px,10vw,90px); animation-delay: 1s; }
+    .lantern:nth-child(3) { bottom: 10%; left: 5%; width: clamp(40px,7vw,70px); animation-delay: 2s; opacity:0.7; }
+    .lantern:nth-child(4) { bottom: 12%; right: 5%; width: clamp(40px,7vw,70px); animation-delay: 2.5s; opacity:0.7; }
     @keyframes floatLantern {
-      0%,100% { transform: translateY(0) rotate(2deg); }
-      50% { transform: translateY(-15px) rotate(-2deg); }
+      0%,100% { transform: translateY(0) rotate(1deg); }
+      50% { transform: translateY(-10px) rotate(-1deg); }
     }
     .lantern .body {
       position: relative;
-      width: 100%; height: 100%;
+      width: 100%; padding-bottom: 150%; /* نسبة ارتفاع مناسبة */
       background: radial-gradient(circle at 35% 35%, #FFE170, #E6B422);
       border-radius: 50% 50% 40% 40%;
-      box-shadow: 0 0 40px #FFA500, 0 0 80px #FF8C00;
     }
     .lantern .body::before {
-      content: ''; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-      width: 30%; height: 16px; background: #B8860B; border-radius: 8px 8px 0 0;
+      content: ''; position: absolute; top: -8px; left: 50%; transform: translateX(-50%);
+      width: 30%; height: 10px; background: #B8860B; border-radius: 5px 5px 0 0;
     }
     .lantern .body::after {
-      content: ''; position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%);
-      width: 25%; height: 12px; background: #FFD700; border-radius: 0 0 8px 8px; filter: blur(4px);
+      content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%);
+      width: 25%; height: 8px; background: #FFD700; border-radius: 0 0 5px 5px; filter: blur(2px);
     }
     .lantern .rope {
-      position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
-      width: 6px; height: 25px; background: linear-gradient(to bottom, #CDA47C, #8B691B); border-radius: 3px;
+      position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+      width: 4px; height: 18px; background: linear-gradient(to bottom, #CDA47C, #8B691B); border-radius: 2px;
     }
 
-    /* ========== هلال كبير ونجوم ========== */
+    /* ========== هلال ونجوم مبسطة ========== */
     .moon {
-      position: absolute; top: 15%; left: 5%;
-      width: min(220px, 35vw); height: min(220px, 35vw);
-      border-radius: 50%; background: transparent;
-      box-shadow: -40px 15px 0 15px rgba(255, 240, 150, 0.08);
-      transform: rotate(30deg); pointer-events: none; z-index: 3;
+      position: absolute; top: 5%; left: 3%;
+      width: min(150px, 25vw); height: min(150px, 25vw);
+      border-radius: 50%;
+      box-shadow: -25px 10px 0 10px rgba(255, 240, 150, 0.1);
+      transform: rotate(25deg); pointer-events: none; z-index: 3;
     }
     .star {
-      position: absolute; color: rgba(255,255,200,0.9);
-      font-size: clamp(1.2rem,5vw,2.5rem); pointer-events: none; z-index: 4;
-      animation: glitter 2.5s infinite alternate;
+      position: absolute; color: rgba(255,255,200,0.7);
+      font-size: clamp(1rem,4vw,2rem); pointer-events: none; z-index: 4;
+      animation: glitter 3s infinite alternate;
     }
-    .star:nth-child(1) { top:12%; left:15%; animation-delay:0s; }
-    .star:nth-child(2) { top:75%; right:12%; animation-delay:1s; }
-    .star:nth-child(3) { top:40%; right:25%; animation-delay:0.7s; }
-    .star:nth-child(4) { bottom:20%; left:20%; animation-delay:1.8s; }
-    .star:nth-child(5) { top:85%; left:45%; animation-delay:2.2s; }
-    .star:nth-child(6) { top:25%; right:40%; animation-delay:0.3s; }
-    .star:nth-child(7) { top:50%; left:5%; animation-delay:1.2s; }
-    .star:nth-child(8) { bottom:30%; right:30%; animation-delay:2.8s; }
+    .star:nth-child(1) { top:15%; left:10%; animation-delay:0s; }
+    .star:nth-child(2) { top:70%; right:10%; animation-delay:1s; }
+    .star:nth-child(3) { top:40%; right:20%; animation-delay:0.5s; }
+    .star:nth-child(4) { bottom:20%; left:15%; animation-delay:1.5s; }
     @keyframes glitter {
-      0% { opacity:0.2; transform:scale(1); text-shadow:0 0 5px gold; }
-      100% { opacity:1; transform:scale(1.4); text-shadow:0 0 30px #FFF0A0,0 0 60px #FFA500; }
+      0% { opacity:0.3; transform:scale(1); }
+      100% { opacity:1; transform:scale(1.2); }
     }
 
-    /* ========== البطاقة الرئيسية (تحفة فنية) ========== */
+    /* ========== البطاقة الرئيسية (خفيفة بدون backdrop-filter على الحواف) ========== */
     .masterpiece {
       position: relative;
       z-index: 100;
-      width: 100%; max-width: 580px;
+      width: 100%; max-width: 550px;
       margin: 0 auto;
       background: var(--glass-bg);
-      backdrop-filter: blur(25px) saturate(200%);
-      -webkit-backdrop-filter: blur(25px) saturate(200%);
-      border: 2px solid var(--border-glow);
-      border-radius: 80px 20px 80px 20px;
-      padding: clamp(28px, 7vw, 55px) clamp(20px, 5vw, 45px);
-      box-shadow: var(--shadow-intensity), 0 0 0 3px rgba(255,215,0,0.2) inset, 0 0 70px rgba(255,200,0,0.4);
-      transition: 0.5s cubic-bezier(0.4,0,0.2,1);
-    }
-    .masterpiece:hover {
-      transform: translateY(-8px) scale(1.01);
-      box-shadow: 0 40px 70px rgba(0,0,0,0.8), 0 0 0 4px rgba(255,215,0,0.5) inset, 0 0 100px #FFB347;
+      backdrop-filter: blur(15px); /* تقليل الـ blur */
+      -webkit-backdrop-filter: blur(15px);
+      border: 2px solid rgba(255, 215, 0, 0.2);
+      border-radius: 60px 15px 60px 15px;
+      padding: clamp(20px, 6vw, 45px) clamp(15px, 4vw, 35px);
+      box-shadow: var(--shadow-intensity), 0 0 0 2px rgba(255,215,0,0.1) inset;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    /* العنوان الرئيسي */
+    /* عنوان سلس */
     .title {
       text-align: center;
-      font-size: clamp(2.7rem, 12vw, 4.8rem);
+      font-size: clamp(2.5rem, 10vw, 4rem);
       font-weight: 900;
       margin-bottom: 0.3rem;
-      background: linear-gradient(145deg, #F6E58D, #F4A300, #FFB347, #F8A5C2, #A6C1EE);
+      background: linear-gradient(145deg, #F6E58D, #F4A300, #FFB347);
       -webkit-background-clip: text; background-clip: text;
       color: transparent;
-      text-shadow: 0 0 30px rgba(255,200,0,0.8);
-      filter: drop-shadow(0 10px 10px #00000060);
+      text-shadow: 0 0 20px rgba(255,200,0,0.5);
       animation: titlePulse 3s infinite alternate;
-      letter-spacing: 2px;
     }
     @keyframes titlePulse {
-      from { filter: drop-shadow(0 0 10px gold); }
-      to { filter: drop-shadow(0 0 50px orange); }
+      from { filter: drop-shadow(0 0 5px gold); }
+      to { filter: drop-shadow(0 0 30px orange); }
     }
 
-    /* وصف */
     .sub {
       text-align: center;
       color: rgba(255,245,200,0.9);
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
       border-bottom: 1px dashed var(--gold);
-      padding-bottom: 1rem;
+      padding-bottom: 0.8rem;
     }
 
-    /* رسائل سريعة (قابلة للتمرير على الهاتف) */
+    /* رسائل سريعة (تمرير أفقي) */
     .quickies {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      overflow-x: auto;
       gap: 10px;
-      justify-content: center;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
+      padding-bottom: 10px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
     }
+    .quickies::-webkit-scrollbar { display: none; }
     .chip {
-      background: rgba(255,255,255,0.05);
-      border: 1.5px solid var(--gold);
-      border-radius: 60px;
-      padding: 10px 20px;
-      font-size: 0.95rem;
+      flex: 0 0 auto;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid var(--gold);
+      border-radius: 50px;
+      padding: 8px 16px;
+      font-size: 0.9rem;
       color: #FFF9E0;
       cursor: pointer;
-      transition: 0.3s;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-      display: flex; align-items: center; gap: 6px;
-      font-weight: 500;
+      transition: background 0.2s, transform 0.1s;
+      backdrop-filter: blur(5px);
+      display: flex; align-items: center; gap: 5px;
       white-space: nowrap;
+      touch-action: manipulation; /* منع التكبير عند الضغط */
     }
-    .chip i { color: var(--gold); font-size: 1rem; }
-    .chip:hover {
+    .chip i { color: var(--gold); }
+    .chip:active {
       background: var(--gold);
       color: #0A0F1F;
-      transform: scale(1.06) translateY(-3px);
-      box-shadow: 0 8px 25px gold;
+      transform: scale(0.97);
     }
-    .chip:active { transform: scale(0.98); }
 
     /* حقول الإدخال */
     .field {
-      margin-bottom: 28px;
+      margin-bottom: 20px;
     }
     .field label {
-      display: block; margin-bottom: 10px;
+      display: block; margin-bottom: 8px;
       color: #FFEFC0; font-weight: 600;
-      font-size: 1.2rem; text-shadow: 0 2px 5px black;
+      font-size: 1rem;
     }
-    .field i { margin-left: 10px; color: var(--gold); font-size: 1.3rem; }
+    .field i { margin-left: 8px; color: var(--gold); }
     .field input, .field textarea {
       width: 100%;
-      padding: 16px 24px;
-      background: rgba(0,0,0,0.4);
-      border: 2px solid rgba(255,223,0,0.3);
-      border-radius: 60px 15px 60px 15px;
+      padding: 14px 18px;
+      background: rgba(0,0,0,0.5);
+      border: 2px solid rgba(255,223,0,0.2);
+      border-radius: 50px 10px 50px 10px;
       color: white;
-      font-size: 1.1rem;
+      font-size: 1rem;
       outline: none;
-      transition: 0.3s;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-      resize: vertical;
+      transition: border 0.2s, box-shadow 0.2s;
+      backdrop-filter: blur(5px);
+      -webkit-appearance: none; /* منع التنسيق الافتراضي */
     }
-    .field textarea { min-height: 140px; }
+    .field textarea { min-height: 120px; }
     .field input:focus, .field textarea:focus {
       border-color: var(--gold);
-      box-shadow: 0 0 40px #FFB347, 0 8px 20px black;
-      background: rgba(0,0,0,0.6);
-      transform: scale(1.02);
+      box-shadow: 0 0 20px #FFB347;
     }
 
-    /* زر الإرسال (أسطورة) */
+    /* زر الإرسال (بدون ظل سفلي ثقيل) */
     .super-button {
       width: 100%;
-      padding: 22px 15px;
-      background: linear-gradient(135deg, #FFD700, #FF8C00, #FF1493, #8A2BE2);
-      background-size: 300% 300%;
+      padding: 18px 12px;
+      background: linear-gradient(135deg, #FFD700, #FF8C00, #FF1493);
+      background-size: 200% 200%;
       border: none;
-      border-radius: 100px;
+      border-radius: 80px;
       color: white;
-      font-size: clamp(2rem, 8vw, 2.8rem);
+      font-size: clamp(1.8rem, 7vw, 2.5rem);
       font-weight: 900;
       cursor: pointer;
-      box-shadow: 0 18px 0 #B22222, 0 30px 60px #FF8C00;
-      transition: 0.15s;
-      display: flex; align-items: center; justify-content: center; gap: 15px;
-      margin: 30px 0 15px;
-      position: relative;
-      overflow: hidden;
-      animation: gradientShift 4s infinite alternate;
+      box-shadow: 0 10px 0 #B22222, 0 20px 40px rgba(255,140,0,0.5);
+      transition: transform 0.1s, box-shadow 0.2s;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      margin: 20px 0 10px;
+      touch-action: manipulation;
+      will-change: transform;
     }
-    @keyframes gradientShift {
-      0% { background-position: 0% 0%; }
-      100% { background-position: 100% 100%; }
-    }
-    .super-button i { font-size: 2.5rem; filter: drop-shadow(0 4px 6px black); }
-    .super-button:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 26px 0 #B22222, 0 40px 80px #FFB347;
-    }
+    .super-button i { font-size: 2rem; filter: drop-shadow(0 2px 3px black); }
     .super-button:active {
-      transform: translateY(8px);
-      box-shadow: 0 10px 0 #B22222, 0 25px 50px #FFA500;
+      transform: translateY(5px);
+      box-shadow: 0 5px 0 #B22222, 0 15px 30px rgba(255,140,0,0.5);
     }
-    .super-button::after {
-      content: ''; position: absolute; top: -50%; left: -50%;
-      width: 200%; height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, transparent 70%);
-      opacity: 0; transition: opacity 0.5s;
-    }
-    .super-button:hover::after {
-      opacity: 1;
-      animation: rotate 5s linear infinite;
-    }
-    @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
     /* شريط الأمان */
     .security {
       text-align: center;
-      margin: 15px auto 0;
+      margin: 10px auto 0;
       color: #DDD;
-      font-size: 0.95rem;
-      background: rgba(0,0,0,0.4);
-      padding: 10px 20px;
-      border-radius: 60px;
-      backdrop-filter: blur(15px);
+      font-size: 0.85rem;
+      background: rgba(0,0,0,0.3);
+      padding: 8px 15px;
+      border-radius: 50px;
+      backdrop-filter: blur(5px);
       border: 1px solid var(--gold);
       width: fit-content;
     }
-    .security i { color: gold; margin: 0 6px; }
 
-    /* تحسينات خاصة للهواتف */
+    /* تحسينات إضافية للهواتف */
     @media (max-width: 480px) {
-      body { padding: 12px; }
-      .masterpiece { border-radius: 60px 15px 60px 15px; padding: 22px 16px; }
-      .quickies { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; padding-bottom: 12px; -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 8px; }
-      .quickies::-webkit-scrollbar { display: none; }
-      .chip { padding: 8px 16px; font-size: 0.85rem; }
-      .field input, .field textarea { padding: 14px 18px; }
-      .super-button { padding: 18px 12px; font-size: 2rem; }
-      .super-button i { font-size: 2rem; }
-      .lantern:nth-child(5), .lantern:nth-child(6) { display: none; } /* نخفي الفوانيس الإضافية */
+      body { padding: 10px; }
+      .masterpiece { padding: 18px 12px; }
+      .chip { padding: 6px 12px; font-size: 0.8rem; }
+      .super-button { padding: 14px 10px; font-size: 1.8rem; }
+      .super-button i { font-size: 1.8rem; }
     }
 
-    /* جسيمات متطايرة */
-    .particles {
-      position: absolute; width: 100%; height: 100%; pointer-events: none; z-index: 2;
-    }
-    .particle {
-      position: absolute; width: 4px; height: 4px; background: gold; border-radius: 50%;
-      filter: blur(2px); animation: particleFloat 10s infinite linear;
-    }
-    @keyframes particleFloat {
-      from { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-      to { transform: translateY(-100vh) rotate(360deg); opacity: 1; }
+    /* تعطيل hover على الأجهزة اللمسية */
+    @media (hover: hover) {
+      .chip:hover {
+        background: var(--gold);
+        color: #0A0F1F;
+        transform: scale(1.05);
+      }
+      .super-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 13px 0 #B22222, 0 25px 50px rgba(255,140,0,0.6);
+      }
     }
   </style>
 </head>
 <body>
-  <!-- الخلفية الكونية -->
+  <!-- خلفية -->
   <div class="cosmic-bg">
     <div class="stars-layer1"></div>
     <div class="stars-layer2"></div>
-    <div class="twinkling-layer"></div>
   </div>
 
-  <!-- فوانيس متعددة -->
+  <!-- فوانيس (أربعة فقط) -->
   <div class="lanterns">
     <div class="lantern"><div class="body"><div class="rope"></div></div></div>
     <div class="lantern"><div class="body"><div class="rope"></div></div></div>
     <div class="lantern"><div class="body"><div class="rope"></div></div></div>
     <div class="lantern"><div class="body"><div class="rope"></div></div></div>
-    <div class="lantern"><div class="body"><div class="rope"></div></div></div>
-    <div class="lantern"><div class="body"><div class="rope"></div></div></div>
   </div>
 
-  <!-- هلال ونجوم -->
+  <!-- هلال ونجوم (أربعة نجوم فقط) -->
   <div class="moon"></div>
-  <i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i>
-  <i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i>
+  <i class="fas fa-star star"></i><i class="fas fa-star star"></i>
   <i class="fas fa-star star"></i><i class="fas fa-star star"></i>
 
-  <!-- جسيمات -->
-  <div class="particles">
-    <div class="particle" style="left:10%; animation-duration:12s;"></div>
-    <div class="particle" style="left:30%; animation-duration:8s;"></div>
-    <div class="particle" style="left:70%; animation-duration:15s;"></div>
-    <div class="particle" style="left:90%; animation-duration:10s;"></div>
-    <div class="particle" style="left:45%; animation-duration:14s;"></div>
-    <div class="particle" style="left:60%; animation-duration:9s;"></div>
-  </div>
-
-  <!-- البطاقة الرئيسية -->
+  <!-- البطاقة -->
   <div class="masterpiece">
     <h1 class="title">🌙 مرسال العيد</h1>
-    <div class="sub"><i class="fas fa-mosque"></i> أرسل التهاني بأناقة لا تُقاوم <i class="fas fa-mosque"></i></div>
+    <div class="sub"><i class="fas fa-mosque"></i> أرسل التهاني بأناقة <i class="fas fa-mosque"></i></div>
 
-    <!-- رسائل سريعة -->
+    <!-- رسائل سريعة (خمسة خيارات) -->
     <div class="quickies">
       <span class="chip" onclick="setMessage('كل عام وأنتم بخير، عيد مبارك')"><i class="fas fa-heart"></i> عام سعيد</span>
       <span class="chip" onclick="setMessage('تقبل الله طاعتكم وكل عام وأنتم بخير')"><i class="fas fa-pray"></i> تقبل الله</span>
@@ -397,10 +329,10 @@
       <textarea id="msg" placeholder="اكتب أحر التهاني...">كل عام وأنتم بخير، عيد مبارك</textarea>
     </div>
 
-    <!-- حقل رقم الواتساب -->
+    <!-- حقل الرقم -->
     <div class="field">
       <label><i class="fab fa-whatsapp"></i> رقم الواتساب (مع مفتاح الدولة)</label>
-      <input type="tel" id="phone" placeholder="مثال: 9665XXXXXXXX" value =970598786853 inputmode="numeric">
+      <input type="tel" id="phone" placeholder="مثال: 9665XXXXXXXX" value="970598786853" inputmode="numeric">
     </div>
 
     <!-- زر الإرسال -->
@@ -415,12 +347,10 @@
   </div>
 
   <script>
-    // تعيين رسالة سريعة
     function setMessage(text) {
       document.getElementById('msg').value = text;
     }
 
-    // إرسال عبر واتساب
     function sendWhatsApp() {
       let phone = document.getElementById('phone').value.trim().replace(/\D/g, '');
       let message = document.getElementById('msg').value.trim() || 'كل عام وأنتم بخير';
